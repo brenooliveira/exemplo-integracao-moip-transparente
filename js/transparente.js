@@ -25,6 +25,10 @@ $(document).ready(function(){
     calcular();
   });
 
+  $("#trocar-token").click(function(){
+    $("#MoipWidget").attr("data-token", $("#token").val());
+  });
+
 });
 
 calcular = function() {
