@@ -1,73 +1,176 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>brenooliveira</title>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <header>
+    <title>Transparente Teste</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
+  </header>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Exemplo-integracao-moip-transparente</h1>
-        <p>Exemplo de Integração com Moip Transparente</p>
-        <p class="view"><a href="https://github.com/brenooliveira/exemplo-integracao-moip-transparente">View the Project on GitHub <small>brenooliveira/exemplo-integracao-moip-transparente</small></a></p>
-        <ul>
-          <li><a href="https://github.com/brenooliveira/exemplo-integracao-moip-transparente/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/brenooliveira/exemplo-integracao-moip-transparente/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/brenooliveira/exemplo-integracao-moip-transparente">View On <strong>GitHub</strong></a></li>
+
+    <div class="row-fluid">
+      <div class="span1">&nbsp;</div>
+      <div class="span10">
+
+        <div class="page-header">
+          <h1>Transparente</h1>
+          <br>
+          <h3>Token da Intrução que deseja executar</h3>
+          <input type="text" id="token" class="span6">
+          <div id="MoipWidget" data-token="X2W0V132C0Q3A3X0F1B0I2S0E271P8J2B5R0D0K090L0M1C7U402P2M0Z2V0" callback-method-success="sucesso" callback-method-error="erro"></div>
+          <button class="btn" id="trocar-token">Aplicar Token</button>
+
+          <!--a class="btn btn-primary" data-toggle="modal" href="#showXml" >Ver Exmplo de XML</a>
+          <div class="modal" id="showXml">
+            <div class="modal-header">
+              <button class="close" data-dismiss="modal">x</button>
+              <h3>Exemplo de Instrucao Unica</h3>
+            </div>
+            <div class="modal-body">
+              <pre class="prettyprint linenums">
+&lt;EnviarInstrucao&gt;
+  &lt;InstrucaoUnica&gt;
+    &lt;Razao&gt;TESTANDO&lt;/Razao&gt;
+    &lt;Valores&gt;
+      &lt;Valor moeda="BRL"&gt;100.00&lt;/Valor&gt;
+    &lt;/Valores&gt;
+    &lt;IdProprio&gt;&lt;/IdProprio&gt;
+    &lt;Pagador&gt;
+      &lt;Nome&gt;Leonardo S B Mendes&lt;/Nome&gt;
+      &lt;Email&gt;leonardo.mendes@moip.com.br&lt;/Email&gt;
+      &lt;TelefoneCelular&gt;(11)8888-5522&lt;/TelefoneCelular&gt;
+      &lt;Identidade Tipo="CPF"&gt;22222222222&lt;/Identidade&gt;
+      &lt;EnderecoCobranca&gt;
+        &lt;Logradouro&gt;Republica do Libano&lt;/Logradouro&gt;
+        &lt;Numero&gt;1551&lt;/Numero&gt;
+        &lt;Complemento&gt;sl 202&lt;/Complemento&gt;
+        &lt;Bairro&gt;Setor Oeste&lt;/Bairro&gt;
+        &lt;Cidade&gt;Goiania&lt;/Cidade&gt;
+        &lt;Estado&gt;GO&lt;/Estado&gt;
+        &lt;Pais&gt;BRA&lt;/Pais&gt;
+        &lt;CEP&gt;74125-125&lt;/CEP&gt;
+        &lt;TelefoneFixo&gt;(11)8888-5522&lt;/TelefoneFixo&gt;
+      &lt;/EnderecoCobranca&gt;
+    &lt;/Pagador&gt;
+    &lt;Parcelamentos&gt;
+       &lt;Parcelamento&gt;
+            &lt;MinimoParcelas&gt;1&lt;/MinimoParcelas&gt;
+            &lt;MaximoParcelas&gt;7&lt;/MaximoParcelas&gt;
+            &lt;Juros&gt;1.5&lt;/Juros&gt;
+            &lt;Repassar&gt;true&lt;/Repassar&gt;
+        &lt;/Parcelamento&gt;
+    &lt;/Parcelamentos&gt;
+  &lt;/InstrucaoUnica&gt;
+&lt;/EnviarInstrucao&gt;
+              </pre>
+            </div>
+          </div-->
+
+       </div><!-- FIM HEADER -->
+
+        <ul id="tabs" class="nav nav-tabs">
+          <li><a href="#card" data-toggle="tab">Pagamento com Cartão</a></li>
+          <li><a href="#vault" data-toggle="tab">Pagamento com Cofre</a></li>
+          <li><a href="#boleto" data-toggle="tab">Pagamento com Boleto</a></li>
+          <li><a href="#debito" data-toggle="tab">Pagamento com Débito</a></li>
+          <li><a href="#parcelamento" data-toggle="tab">Calculo Parcelamento</a></li>
         </ul>
-      </header>
-      <section>
-        <h3>Welcome to GitHub Pages.</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+        <!-- Exibe Resultado -->
+        <div id="resultado" class="alert">
+        </div>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade" id="card">
+              <form class="well">
+                <label>Parcelas:</label>
+                <input type="text" id="Parcelas" name="Parcelas" value="1" size="2">
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+                <label>Instituição:</label>
+                <select id="instituicao">
+                  <option value="Visa">Visa</option>
+                  <option value="Mastercard">Mastercard</option>
+                </select>
 
-<h3>Designer Templates</h3>
+                <label>Numero do Cartão:</label>
+                <input type="text" id="Numero" name="Numero" value="4073020000000002">
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+                <label>Expiração:</label>
+                <input type="text" id="Expiracao" name="Expiracao" value="10/13" size="5">
 
-<h3>Rather Drive Stick?</h3>
+                <label>CVV:</label>
+                <input type="text" id="CodigoSeguranca" name="CodigoSeguranca" value="123" size="4">
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+                <label>Portador:</label>
+                <input type="text" id="Portador" name="Portador" value="Vagner Fiuza Vieira">
 
-<h3>Authors and Contributors</h3>
+                <label>CPF:</label>
+                <input type="text" id="CPF" name="CPF" value="370.656.788-14">
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+                <label>Data Nascimento:</label>
+                <input type="text" id="DataNascimento" name="DataNascimento" value="17/11/1988"><br>
 
-<h3>Support or Contact</h3>
+                <label>Telefone:</label>
+                <input type="text" id="Telefone" name="Telefone" value="(11)7634-5523"><br>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/brenooliveira">brenooliveira</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+                <label></label>
+                <button id="sendToMoip" class="btn"> Enviar para o Moip > </button>
+              </form>
+            </div>
+
+            <div class="tab-pane fade" id="vault">
+              <div class="well">
+                <label>Parcelas:</label>
+                <input type="text" id="Parcelas" name="Parcelas" value="1" size="2">
+
+                <label>Cofre:</label>
+                <input type="text" id="Cofre" name="Cofre" value="07e3b5df-652d-48d7-8f37-be355f3824b3">
+
+                <label>CVV:</label>
+                <input type="text" id="CodigoSeguranca" name="CodigoSeguranca" value="123" size="4"/><br>
+
+                <button id="" class="btn"> Enviar para o Moip </button>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="boleto">
+              <div class="well">
+                <input type="button" id="boleto" class="btn" value="Boleto Bancário">
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="debito">
+              <div class="well">
+                <input type="button" class="btn" id="debit" value="Débito">
+              </div>
+            </div><!-- debito -->
+
+            <div class="tab-pane fade" id="parcelamento">
+              <div class="well">
+                <label>Informe a Bandeira para calcular a taxa:</label>
+                <select id="instituicao-calc-parcela">
+                  <option value="Visa">Visa</option>
+                  <option value="Mastercard">Mastercard</option>
+                </select>
+                <br>
+                <button class="btn" id="calcular-btn">Calcular</button>
+              </div>
+            </div>
+        </div>
+
+
+      </div>
+      <div class="span1">&nbsp;</div>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-              <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("Moip Transparente");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
 
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-tab.js"></script>
+    <script type="text/javascript" src="js/bootstrap-modal.js"></script>
+    <script type="text/javascript" src="google-code-prettify/prettify.js"></script>
+    <!--script type='text/javascript' src='https://www.homologacao.moip.local/transparente/MoipWidget-v2.js'></script-->
+    <script type='text/javascript' src='https://www.homologacao.moip.local/transparente/MoipWidget.js'></script>
+    <script type="text/javascript" src="js/transparente.js"></script>
   </body>
 </html>
