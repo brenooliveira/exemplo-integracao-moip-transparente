@@ -4,6 +4,7 @@
     <title>Transparente Teste</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
   </header>
 
   <body>
@@ -15,19 +16,24 @@
         <div class="page-header">
           <h1>Transparente</h1>
           <br>
-          <h3>Token da IntruÁ„o que deseja executar</h3>
+          <h3>Token da Intru√ß√£o que deseja executar</h3>
           <input type="text" id="token" class="span6">
           <div id="MoipWidget" data-token="X2W0V132C0Q3A3X0F1B0I2S0E271P8J2B5R0D0K090L0M1C7U402P2M0Z2V0" callback-method-success="sucesso" callback-method-error="erro"></div>
           <button class="btn" id="trocar-token">Aplicar Token</button>
-       </div>
+
+       </div><!-- FIM HEADER -->
 
         <ul id="tabs" class="nav nav-tabs">
-          <li><a href="#card" data-toggle="tab">Pagamento com Cart„o</a></li>
+          <li><a href="#card" data-toggle="tab">Pagamento com Cart√£o</a></li>
           <li><a href="#vault" data-toggle="tab">Pagamento com Cofre</a></li>
           <li><a href="#boleto" data-toggle="tab">Pagamento com Boleto</a></li>
-          <li><a href="#debito" data-toggle="tab">Pagamento com DÈbito</a></li>
+          <li><a href="#debito" data-toggle="tab">Pagamento com D√©bito</a></li>
           <li><a href="#parcelamento" data-toggle="tab">Calculo Parcelamento</a></li>
         </ul>
+
+        <!-- Exibe Resultado -->
+        <div id="resultado" class="alert">
+        </div>
 
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade" id="card">
@@ -35,16 +41,16 @@
                 <label>Parcelas:</label>
                 <input type="text" id="Parcelas" name="Parcelas" value="1" size="2">
 
-                <label>InstituiÁ„o:</label>
+                <label>Institui√ß√£o:</label>
                 <select id="instituicao">
                   <option value="Visa">Visa</option>
                   <option value="Mastercard">Mastercard</option>
                 </select>
 
-                <label>Numero do Cart„o:</label>
+                <label>Numero do Cart√£o:</label>
                 <input type="text" id="Numero" name="Numero" value="4073020000000002">
 
-                <label>ExpiraÁ„o:</label>
+                <label>Expira√ß√£o:</label>
                 <input type="text" id="Expiracao" name="Expiracao" value="10/13" size="5">
 
                 <label>CVV:</label>
@@ -84,13 +90,13 @@
 
             <div class="tab-pane fade" id="boleto">
               <div class="well">
-                <input type="button" id="boleto" class="btn" value="Boleto Banc·rio">
+                <input type="button" id="boleto" class="btn" value="Boleto Banc√°rio">
               </div>
             </div>
 
             <div class="tab-pane fade" id="debito">
               <div class="well">
-                <input type="button" class="btn" id="debit" value="DÈbito">
+                <input type="button" class="btn" id="debit" value="D√©bito">
               </div>
             </div><!-- debito -->
 
@@ -115,7 +121,10 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bootstrap-tab.js"></script>
-    <script type='text/javascript' src='https://www.homologacao.moip.local/transparente/MoipWidget-v2.js'></script>
+    <script type="text/javascript" src="js/bootstrap-modal.js"></script>
+    <script type="text/javascript" src="google-code-prettify/prettify.js"></script>
+    <!--script type='text/javascript' src='https://www.homologacao.moip.local/transparente/MoipWidget-v2.js'></script-->
+    <script type='text/javascript' src='https://www.homologacao.moip.local/transparente/MoipWidget.js'></script>
     <script type="text/javascript" src="js/transparente.js"></script>
   </body>
 </html>

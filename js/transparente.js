@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+  $("#resultado").hide();
+
+  $('#showXml').modal('toggle')
+
   $('#tabs a:first').tab('show');
 
   //Exibi o token no Form
@@ -33,6 +37,7 @@ $(document).ready(function(){
 
 calcular = function() {
   var settings = {
+    cofre: '',
     instituicao: $("#instituicao-calc-parcela").val(),
     callback: "retornoCalculoParcelamento"
   };
