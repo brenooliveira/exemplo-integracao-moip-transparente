@@ -42,7 +42,7 @@ calcular = function() {
     callback: "retornoCalculoParcelamento"
   };
 
-  var parcelas = MoipUtil.calcularParcela(settings);
+  MoipUtil.calcularParcela(settings);
 };
 
 retornoCalculoParcelamento = function(data) {
