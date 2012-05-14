@@ -52,7 +52,7 @@ retornoCalculoParcelamento = function(data) {
 sendToCreditCard = function() {
     var settings = {
         "Forma": "CartaoCredito",
-        "Instituicao": "Visa",
+        "Instituicao": $("#instituicao").val(),
         "Parcelas": $("input[name=Parcelas]").val(),
         "Recebimento": "AVista",
         "CartaoCredito": {
@@ -121,9 +121,8 @@ var sucesso = function(data){
 
 };
 
-var erro = function(data) {
-    alert("Erro !\n\n" + data);
-
+var erroValidacao = function(data) {
+    alert("Erro !\n\n" + JSON.stringify(data));
     $("#sendToMoip").removeAttr("disabled");
     $("#sendToCofre").removeAttr("disabled");
 };
