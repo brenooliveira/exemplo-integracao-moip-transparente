@@ -97,6 +97,8 @@ sendToDebit = function() {
   };
 
   MoipWidget(settings);
+
+  $("#link-debito").append("<a href='https://desenvolvedor.moip.com.br/Instrucao.do?token=" + $("#MoipWidget").attr("data-token") + "' target='_blank'>Abrir</a>");
 }
 
 
