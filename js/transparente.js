@@ -6,31 +6,29 @@ $(document).ready(function(){
 
   $('#tabs a:first').tab('show');
 
-  //Exibi o token no Form
-  $("#token").val($("#MoipWidget").attr("data-token"));
-
   $("#sendToMoip").click(function(){
+    applyToken();
     sendToCreditCard();
   });
 
   $("#sendToCofre").click(function(){
+    applyToken();
     sendToCofre();
   });
 
   $("#boleto").click(function(){
+    applyToken();
     sendToBoleto();
   });
 
   $("#debit").click(function() {
+    applyToken();
     sendToDebit();
   });
 
   $("#calcular-btn").click(function(){
+    applyToken();
     calcular();
-  });
-
-  $("#trocar-token").click(function(){
-    $("#MoipWidget").attr("data-token", $("#token").val());
   });
 
 });
@@ -127,4 +125,8 @@ var erroValidacao = function(data) {
     alert("Erro !\n\n" + JSON.stringify(data));
     $("#sendToMoip").removeAttr("disabled");
     $("#sendToCofre").removeAttr("disabled");
+};
+
+var applyToken = function() {
+  $("#MoipWidget").attr("data-token", $("#token").val());
 };
